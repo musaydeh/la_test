@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="sh_pdc.menu_pdc_payments_receivable" model="ir.ui.menu">
+        <field name="parent_id" ref="account_accountant.menu_accounting"/>
+    </record>
+    <record id="sh_pdc.menu_pdc_payments_payable" model="ir.ui.menu">
+        <field name="parent_id" ref="account_accountant.menu_accounting"/>
+    </record>
+</odoo>
