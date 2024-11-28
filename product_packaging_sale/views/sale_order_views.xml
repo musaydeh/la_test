@@ -1,0 +1,23 @@
+<odoo>
+    <record id="view_product_packaging_sale_order_form" model="ir.ui.view">
+        <field name="name">view.product.packaging.sale.sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_view_delivery']" position="before">
+                <button type="object" name="action_view_delivery_packaging" class="oe_stat_button" icon="fa-truck"
+                        attrs="{'invisible': [('delivery_packaging_count', '=', 0)]}" groups="stock.group_stock_user">
+                    <field name="delivery_packaging_count" widget="statinfo" string="Delivery Packaging"/>
+                </button>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="before">
+                <field name="current_extra_price" invisible="1"/>
+                <field name="extra_price"
+                       attrs="{'readonly': [('qty_invoiced', '&gt;', 0)],'invisible': [('product_id', '=', False)]}"
+                       groups="product.group_stock_packaging"/>
+                <field name="price_unit_original" force_save="1" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
